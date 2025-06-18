@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InspiredJewels</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #fff;
+      color: #000;
+    }
+    header {
+      background-color: #000;
+      color: #fff;
+      padding: 1rem;
+      text-align: center;
+    }
+    nav {
+      text-align: center;
+      margin: 1rem 0;
+    }
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #000;
+      font-weight: bold;
+    }
+    .hero {
+      text-align: center;
+      padding: 3rem 1rem;
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+    }
+    .products {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      padding: 2rem;
+    }
+    .product {
+      border: 1px solid #000;
+      padding: 1rem;
+      width: 300px;
+      text-align: center;
+    }
+    .product img {
+      width: 100%;
+      height: auto;
+    }
+    .product select {
+      margin-top: 0.5rem;
+      padding: 0.3rem;
+      width: 100%;
+    }
+    .product form {
+      margin-top: 1rem;
+    }
+    footer {
+      background-color: #000;
+      color: #fff;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>InspiredJewels</h1>
+  </header>
+
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section class="hero" id="home">
+    <h1>Shine with InspiredJewels</h1>
+    <p>Wether you're reselling or just want to shine without breaking the bank, we've got you covered!</p>
+  </section>
+
+  <section class="products">
+    <div class="product">
+      <img id="bangle-img" src="https://img4.dhresource.com/webp/m/100x100/f3/albu/ys/h/06/8eceb630-1d6b-4a7a-bddf-dafcc1cebfcc.jpg" alt="Love Bangle">
+      <h3>Love Bangle</h3>
+      <p>$50.00</p>
+      <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" onsubmit="return updateForm(this)">
+        <input type="hidden" name="cmd" value="_xclick">
+        <input type="hidden" name="business" value="mooohammy@gmail.com">
+        <input type="hidden" name="currency_code" value="USD">
+        <input type="hidden" name="amount" value="50.00">
+        <input type="hidden" name="item_name" id="paypal-item-name" value="Love Bangle">
+        <input type="hidden" name="no_shipping" value="0">
+
+        <label for="color">Color:</label>
+        <select name="color" id="bangle-color" onchange="changeBangleImage()">
+          <option value="Gold" selected>Gold</option>
+          <option value="Rose Gold">Rose Gold</option>
+          <option value="Silver">Silver</option>
+        </select>
+
+        <label for="size">Size (cm):</label>
+        <select name="size" id="bangle-size">
+          <option value="16">16</option>
+          <option value="17">17</option>
+          <option value="18">18</option>
+        </select>
+
+        <input type="submit" value="Buy Now via PayPal">
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 InspiredJewels. All rights reserved. Contact us: Inspiredjewelshelp@outlook.com</p>
+  </footer>
+
+  <script>
+    function changeBangleImage() {
+      const color = document.getElementById('bangle-color').value;
+      const img = document.getElementById('bangle-img');
+      if (color === 'Gold') img.src = 'https://img4.dhresource.com/webp/m/100x100/f3/albu/ys/h/06/8eceb630-1d6b-4a7a-bddf-dafcc1cebfcc.jpg';
+      else if (color === 'Rose Gold') img.src = 'https://img4.dhresource.com/webp/m/100x100/f3/albu/ys/h/06/c8a0552e-adb5-40f8-8e71-e7c45ed55537.jpg';
+      else if (color === 'Silver') img.src = 'https://img4.dhresource.com/webp/m/100x100/f3/albu/ys/h/06/4ec839d0-0e4a-4886-82a7-b2002c9c0ed1.jpg';
+    }
+
+    function updateForm(form) {
+      const color = document.getElementById('bangle-color').value;
+      const size = document.getElementById('bangle-size').value;
+      const itemNameInput = form.querySelector('#paypal-item-name');
+      itemNameInput.value = `Love Bangle - ${color} - Size ${size}`;
+      return true;
+    }
+  </script>
+</body>
+</html>
